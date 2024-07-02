@@ -4,9 +4,21 @@
 #include <windows.h>
 #include <stdint.h>
 
-HANDLE Open() {
+int Close(HANDLE h_Serial) {
+
+    CloseHandle(h_Serial);
+
+    return 0;
+}
+
+HANDLE Open(uint8_t port) {
     HANDLE h_Serial;
-    h_Serial = CreateFile(L"COM4\0", GENERIC_READ | GENERIC_WRITE, 0, 0, OPEN_EXISTING,
+
+    uint16_t numP[6] = L"COM0\0";
+
+    numP[3] = (uint16_t)(port);
+
+    h_Serial = CreateFile(numP, GENERIC_READ | GENERIC_WRITE, 0, 0, OPEN_EXISTING,
         FILE_ATTRIBUTE_NORMAL, 0);
     if (h_Serial == INVALID_HANDLE_VALUE) {
         if (GetLastError() == ERROR_FILE_NOT_FOUND) {

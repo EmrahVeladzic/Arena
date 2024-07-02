@@ -11,7 +11,14 @@ int main()
 
 	ent* Entities[2];
 
-	HANDLE P = Open();
+	printf("Enter Player 1 controller port:\n");
+
+	int8_t port = getchar();
+
+
+	HANDLE P = Open(port);
+
+	qClear();
 
 	uint8_t Data;
 
@@ -77,6 +84,7 @@ int main()
 	}  
 
 	printf("END");
+	Close(P);
 
 	for (size_t i = 0; i < 2; i++)
 	{

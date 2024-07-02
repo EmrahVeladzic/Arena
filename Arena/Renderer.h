@@ -5,6 +5,8 @@
 #include "Characters.h"
 #include <windows.h>
 
+#define NUM_LINES 6
+
 void qClear()
 {
     COORD coord;
@@ -15,7 +17,7 @@ void qClear()
         coord
     );
 
-    for (size_t i = 0; i < 10; i++)
+    for (size_t i = 0; i < NUM_LINES; i++)
     {
         printf("                           \n");
     }
@@ -45,6 +47,8 @@ int Render(ent* Player, ent* AI) {
     }
 
 	return 0;
+
+    Sleep(50);
 }
 
 #endif // !RENDERER
