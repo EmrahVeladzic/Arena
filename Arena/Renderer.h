@@ -19,7 +19,7 @@ void qClear()
 
     for (size_t i = 0; i < NUM_LINES; i++)
     {
-        printf("                           \n");
+        printf("                                            \n");
     }
 
     SetConsoleCursorPosition(
